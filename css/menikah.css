@@ -755,8 +755,9 @@ body.preloader-site {
 /* Floating music button */
 #musicBtn {
   position: fixed;
-  bottom: 80px;
-  right: 20px;
+  bottom: 20px;
+  left: 20px;
+  right: auto;
   z-index: 1000;
   background-color: #996E6D;
   color: white;
