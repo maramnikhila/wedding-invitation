@@ -117,7 +117,7 @@ html {
 
 
 .space40px{
-  height: 40px;
+  height: 24px;
 }
 
 .space24px{
@@ -132,12 +132,12 @@ html {
 
 .main-content .section-dark {
   background-color: #F4E2E2;
-  padding: 80px 40px;
+  padding: 52px 40px;
 }
 
 .main-content .section-darker {
   background-color: #EDD2D1;
-  padding: 80px 40px;
+  padding: 52px 40px;
 }
 
 .main-content .section-dark.resume {
@@ -207,7 +207,7 @@ html {
 }
 
 .main-content .section-light {
-  padding: 80px 40px;
+  padding: 52px 40px;
 }
 
 .main-content .section-light.regular-section {
@@ -292,9 +292,9 @@ html {
   font-weight: 900;
   color: #996E6D;
   text-transform: uppercase;
-  font-size: 1.5rem;
-  letter-spacing: 0px;
-  padding-bottom: 60px;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  padding-bottom: 28px;
 }
 
 .nama-lengkap {
@@ -320,15 +320,80 @@ vertical-align: middle;
 }
 
 .waktu {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-family: 'Raleway', sans-serif;
 }
 
 .tanggal-angka {
-  font-size: 5rem;
+  font-size: 3.2rem;
   font-family: 'Raleway', sans-serif;
   font-weight: 900;
   line-height: 1;
+}
+
+/* ── Time section cards ── */
+.time-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem 3rem;
+}
+
+.time-card {
+  text-align: center;
+  padding: 1rem 2rem;
+}
+
+.time-card-icon {
+  font-size: 1.8rem;
+  color: #996E6D;
+  margin-bottom: 0.6rem;
+}
+
+.tanggal-hari {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #BC8887;
+  margin-bottom: 0.1rem;
+}
+
+.tanggal-bulan {
+  font-size: 1rem;
+  font-family: 'Raleway', sans-serif;
+  letter-spacing: 1px;
+  margin-top: 0.2rem;
+  color: #555;
+}
+
+.time-label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #BC8887;
+  margin-bottom: 0.4rem;
+}
+
+.time-value {
+  font-size: 2.4rem;
+  font-weight: 900;
+  font-family: 'Raleway', sans-serif;
+  color: #996E6D;
+  line-height: 1;
+}
+
+.time-vdivider {
+  width: 1px;
+  height: 90px;
+  background: #BC8887;
+  opacity: 0.35;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .time-vdivider { display: none; }
+  .time-card { padding: 0.8rem 1rem; }
 }
 
 .tempat {
@@ -651,4 +716,266 @@ body.preloader-site {
   vertical-align: middle;
   text-align: center;
   padding: 10px;
+}
+
+/* =====================================================
+   ENHANCEMENTS: Animations, Music, Gallery, About
+   ===================================================== */
+
+/* Heartbeat preloader */
+.preloader img {
+  animation: heartbeat 1.4s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 28%, 70%, 100% { transform: scale(1); }
+  14%, 42%           { transform: scale(1.3); }
+}
+
+/* Floating rose petals */
+.petal {
+  position: absolute;
+  top: -60px;
+  animation-name: petalFall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: 12s;
+  animation-delay: 0s;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+@keyframes petalFall {
+  0%   { transform: translateY(-60px) rotate(0deg)   translateX(0);    opacity: 1; }
+  50%  { transform: translateY(40vh)  rotate(200deg) translateX(30px);  opacity: 0.8; }
+  100% { transform: translateY(95vh)  rotate(400deg) translateX(-15px); opacity: 0; }
+}
+
+/* Floating music button */
+#musicBtn {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  z-index: 1000;
+  background-color: #996E6D;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(153, 110, 109, 0.5);
+  transition: background 0.3s, transform 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+#musicBtn:hover {
+  background-color: #BC8887;
+  transform: scale(1.1);
+}
+
+#musicBtn.playing {
+  animation: musicPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes musicPulse {
+  0%, 100% { box-shadow: 0 0 0 0   rgba(153, 110, 109, 0.65); }
+  60%      { box-shadow: 0 0 0 16px rgba(153, 110, 109, 0);   }
+}
+
+/* Lightbox overlay */
+#lightbox {
+  display: none;
+  position: fixed;
+  z-index: 99999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.88);
+  justify-content: center;
+  align-items: center;
+}
+
+#lightbox.active {
+  display: flex;
+}
+
+#lightbox img {
+  max-width: 90%;
+  max-height: 90vh;
+  border-radius: 12px;
+  box-shadow: 0 12px 50px rgba(0, 0, 0, 0.7);
+  animation: lightboxIn 0.3s ease;
+}
+
+@keyframes lightboxIn {
+  from { transform: scale(0.82); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
+#lightbox-close {
+  position: absolute;
+  top: 18px;
+  right: 28px;
+  color: white;
+  font-size: 3rem;
+  cursor: pointer;
+  line-height: 1;
+  opacity: 0.85;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+#lightbox-close:hover {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+/* Gallery photo hover */
+.gallery-photo {
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  cursor: pointer;
+}
+
+.gallery-photo:hover {
+  transform: scale(1.04) translateY(-5px);
+  box-shadow: 0 14px 30px rgba(153, 110, 109, 0.38) !important;
+}
+
+/* About section – circular photo */
+.about-photo-wrapper {
+  display: inline-block;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 190px;
+  height: 190px;
+  border: 4px solid #BC8887;
+  box-shadow: 0 8px 28px rgba(153, 110, 109, 0.3);
+  margin: 1rem auto;
+}
+
+.about-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.about-photo:hover {
+  transform: scale(1.08);
+}
+
+.about-role {
+  font-size: 1rem;
+  color: #BC8887;
+  font-style: italic;
+  letter-spacing: 1px;
+  margin-top: 0.3rem;
+}
+
+/* Countdown timer enhancement */
+#hitungmundur {
+  list-style: none;
+  display: flex !important;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 0.4rem;
+  padding: 0;
+  margin: 2rem auto 0.5rem;
+}
+
+#hitungmundur li {
+  text-align: center;
+}
+
+#hitungmundur li span {
+  display: block;
+  font-size: 3.2rem;
+  font-weight: 900;
+  background: rgba(255, 255, 255, 0.18);
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-radius: 12px;
+  padding: 8px 16px;
+  min-width: 78px;
+  line-height: 1.1;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(6px);
+}
+
+#hitungmundur li p {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 7px;
+  opacity: 0.9;
+}
+
+#hitungmundur .separator {
+  font-size: 3rem;
+  font-weight: 900;
+  opacity: 0.65;
+  padding-bottom: 32px;
+}
+
+/* RSVP form polish */
+#rsvpForm {
+  background: white;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 32px rgba(153, 110, 109, 0.15) !important;
+  padding: 2.5rem !important;
+}
+
+#rsvpForm .label {
+  color: #996E6D;
+  font-weight: 600;
+}
+
+#rsvpForm .input:focus,
+#rsvpForm .textarea:focus,
+#rsvpForm .select select:focus {
+  border-color: #996E6D;
+  box-shadow: 0 0 0 2px rgba(153, 110, 109, 0.2);
+}
+
+#rsvpForm .button.is-primary {
+  background-color: #996E6D;
+  border-color: #996E6D;
+  padding: 0 2.5rem;
+  height: 2.8rem;
+  border-radius: 8px;
+  transition: background 0.2s, transform 0.15s;
+}
+
+#rsvpForm .button.is-primary:hover {
+  background-color: #BC8887;
+  border-color: #BC8887;
+  transform: translateY(-1px);
+}
+
+/* Section-title underline accent */
+.section-title::after {
+  content: '';
+  display: block;
+  margin: 10px auto 0;
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(to right, #BC8887, #996E6D);
+  border-radius: 2px;
+}
+
+/* Hero couple names */
+.hero .title {
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* Nama lengkap hover glow */
+.nama-lengkap {
+  transition: text-shadow 0.3s;
+}
+
+.nama-lengkap:hover {
+  text-shadow: 0 2px 18px rgba(153, 110, 109, 0.5);
 }
